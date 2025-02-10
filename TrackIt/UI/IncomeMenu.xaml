@@ -1,0 +1,47 @@
+﻿<Window x:Class="TrackIt.IncomeMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TrackIt - Income" Height="300" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Títol de l'aplicació -->
+        <TextBlock Text="Add Income" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <!-- Formulari d'entrada -->
+        <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0" Width="580">
+            <!-- Descripció de l'ingrés -->
+            <TextBox Name="DescriptionTextBox" Width="500" Height="40" FontSize="16" BorderBrush="Gray" BorderThickness="1" Padding="10,5"
+                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="0,0,0,10" 
+                     Text="Description" />
+
+            <!-- Import de l'ingrés -->
+            <TextBox Name="AmountTextBox" Width="500" Height="40" FontSize="16" BorderBrush="Gray" BorderThickness="1" Padding="10,5"
+                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="0,0,0,10" 
+                     Text="Amount" />
+
+            <!-- Categoria de l'ingrés -->
+            <ComboBox Name="CategoryComboBox" Width="200" Height="40" FontSize="16" BorderBrush="Gray" BorderThickness="1" Padding="10,50"
+                      HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="300,0,0,20">
+                <ComboBoxItem Content="Salary"/>
+                <ComboBoxItem Content="Business"/>
+                <ComboBoxItem Content="Investment"/>
+                <ComboBoxItem Content="Others"/>
+            </ComboBox>
+
+            <!-- Botons de desar i cancel·lar -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                <!-- Botó per desar l'ingrés -->
+                <Button Content="Save Income" Width="100" Height="50" FontSize="16" Background="#4CAF50" Foreground="White" 
+                        BorderBrush="Green" BorderThickness="1" VerticalAlignment="Top" Margin="0,0,10,0"/>
+
+                <!-- Botó per cancel·lar -->
+                <Button Content="Cancel" Width="100" Height="50" FontSize="16" Background="#F44336" Foreground="White" 
+                        BorderBrush="Red" BorderThickness="1" VerticalAlignment="Top"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

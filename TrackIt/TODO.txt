@@ -1,0 +1,1 @@
+﻿- Implement Expenses or Incomes that are unique or repetitive.

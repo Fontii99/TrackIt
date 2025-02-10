@@ -1,0 +1,46 @@
+﻿<Window x:Class="TrackIt.SummaryMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TrackIt - Summary" Height="500" Width="800" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Títol de l'aplicació -->
+        <TextBlock Text="Summary" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,20"/>
+
+        <!-- Resum dels ingressos, despeses i balanç -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+            <!-- Ingressos totals -->
+            <StackPanel Margin="10">
+                <TextBlock Text="Total Income" FontSize="16" FontWeight="Bold"/>
+                <TextBlock Name="TotalIncomeText" Text="$0.00" FontSize="14" Foreground="Green"/>
+            </StackPanel>
+
+            <!-- Despeses totals -->
+            <StackPanel Margin="10">
+                <TextBlock Text="Total Expenses" FontSize="16" FontWeight="Bold"/>
+                <TextBlock Name="TotalExpensesText" Text="$0.00" FontSize="14" Foreground="Red"/>
+            </StackPanel>
+
+            <!-- Balanç -->
+            <StackPanel Margin="10">
+                <TextBlock Text="Balance" FontSize="16" FontWeight="Bold"/>
+                <TextBlock Name="BalanceText" Text="$0.00" FontSize="14" Foreground="Blue"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- DataGrid per mostrar els ingressos i despeses -->
+        <DataGrid Name="DataGridSummary" Grid.Row="2" Margin="10" AutoGenerateColumns="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*"/>
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="2*"/>
+                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="*"/>
+                <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="1*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
