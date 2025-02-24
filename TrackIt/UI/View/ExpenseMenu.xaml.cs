@@ -2,14 +2,17 @@
 
 namespace TrackIt
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class ExpenseMenu : Window
     {
         public ExpenseMenu()
         {
             InitializeComponent();
+
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

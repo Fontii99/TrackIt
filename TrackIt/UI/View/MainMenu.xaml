@@ -8,16 +8,14 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
         <!-- Títol de l'aplicació -->
         <TextBlock Text="TrackIt" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
-
         <!-- Contingut del menú principal -->
         <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Content="Expense" Width="250" Height="50" FontSize="16" />
-            <Button Content="Income" Width="250" Height="50" FontSize="16" Margin="0,20,0,0"/>
-            <Button Content="Reports" Width="250" Height="50" FontSize="16" Margin="0,20,0,0"/>
-            <Button Content="Summary" Width="250" Height="50" FontSize="16" Margin="0,20,0,0"/>
+            <Button x:Name="ExpenseButton" Content="Expense" Width="250" Height="50" FontSize="16" Click="ExpenseButton_Click" />
+            <Button x:Name="IncomeButton" Content="Income" Width="250" Height="50" FontSize="16" Margin="0,20,0,0" Click="IncomeButton_Click" />
+            <Button x:Name="ReportsButton" Content="Reports" Width="250" Height="50" FontSize="16" Margin="0,20,0,0" />
+            <Button x:Name="SummaryButton" Content="Summary" Width="250" Height="50" FontSize="16" Margin="0,20,0,0" Click="SummaryButton_Click" />
         </StackPanel>
     </Grid>
 </Window>

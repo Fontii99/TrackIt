@@ -12,6 +12,7 @@
     <Folder Include="Backend\" />
     <Folder Include="DataLayer\" />
     <Folder Include="DomainLayer\" />
+    <Folder Include="UI\Model\" />
   </ItemGroup>
 
 </Project>
