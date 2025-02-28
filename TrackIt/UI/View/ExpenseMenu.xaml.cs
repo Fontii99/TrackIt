@@ -1,38 +1,17 @@
 ﻿using System.Windows;
-using TrackIt.UI.Model;
+using TrackIt.UI.ViewModel;
 
 namespace TrackIt
 {
     public partial class ExpenseMenu : Window
     {
+        private ExpenseMenuViewModel _viewModel;
+
         public ExpenseMenu()
         {
             InitializeComponent();
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void RecurringCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            PeriodComboBox.IsEnabled = true;
-            EndDatePicker.IsEnabled = true;
-            
-        }
-
-        private void RecurringCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            PeriodComboBox.IsEnabled = false;
-            EndDatePicker.IsEnabled = false;
-            EndDatePicker.SelectedDate = null;
-            PeriodComboBox.SelectedIndex = -1;
-        }
-
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+            _viewModel = Resources["ExpenseViewModel"] as ExpenseMenuViewModel;
+            _viewModel.RequestClose += () => Close();
         }
     }
 }

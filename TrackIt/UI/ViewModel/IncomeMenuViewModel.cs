@@ -7,7 +7,7 @@ using TrackIt.UI.Model;
 
 namespace TrackIt.UI.ViewModel
 {
-    public class ExpenseMenuViewModel : INotifyPropertyChanged
+    public class IncomeMenuViewModel : INotifyPropertyChanged
     {
         private string _description;
         private string _amount;
@@ -117,7 +117,7 @@ namespace TrackIt.UI.ViewModel
         }
 
         // Categories list for binding
-        public List<string> Categories { get; } = new List<string> { "Food", "Transport", "Entertainment", "Bills", "Add..." };
+        public List<string> Categories { get; } = new List<string> { "Salary", "Investment", "Others" , "Add..."};
 
         // Periods list for binding
         public List<string> Periods { get; } = new List<string> { "Day", "1 Month", "3 Months", "6 Months", "Year" };
@@ -126,7 +126,7 @@ namespace TrackIt.UI.ViewModel
         public ICommand SaveCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public ExpenseMenuViewModel()
+        public IncomeMenuViewModel()
         {
             SaveCommand = new RelayCommand(ExecuteSave, CanSave);
             CancelCommand = new RelayCommand(ExecuteCancel);
@@ -147,10 +147,10 @@ namespace TrackIt.UI.ViewModel
             // Parse amount as int (you might want to add validation)
             if (int.TryParse(Amount, out int amountValue))
             {
-                // Create a new expense entry
+                // Create a new income entry
                 var entry = new Entry
                 {
-                    Type = true, // Expense
+                    Type = false, // Income
                     Description = Description,
                     Amount = amountValue,
                     Date = StartDate.Value,
