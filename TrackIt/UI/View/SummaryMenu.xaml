@@ -9,37 +9,70 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <!-- Títol de l'aplicació -->
+
+        <!-- Title -->
         <TextBlock Text="Summary" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,20"/>
-        <!-- Resum dels ingressos, despeses i balanç -->
+
+        <!-- Summary of income, expenses and balance -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
-            <!-- Ingressos totals -->
+            <!-- Total Income -->
             <StackPanel Margin="10">
                 <TextBlock Text="Total Income" FontSize="16" FontWeight="Bold"/>
-                <TextBlock Name="TotalIncomeText" Text="$0.00" FontSize="14" Foreground="Green"/>
+                <TextBlock Name="TotalIncomeText" Text="{Binding TotalIncome, StringFormat=${0:N2}}" 
+                           FontSize="14" Foreground="Green"/>
             </StackPanel>
-            <!-- Despeses totals -->
+
+            <!-- Total Expenses -->
             <StackPanel Margin="10">
                 <TextBlock Text="Total Expenses" FontSize="16" FontWeight="Bold"/>
-                <TextBlock Name="TotalExpensesText" Text="$0.00" FontSize="14" Foreground="Red"/>
+                <TextBlock Name="TotalExpensesText" Text="{Binding TotalExpense, StringFormat=${0:N2}}" 
+                           FontSize="14" Foreground="Red"/>
             </StackPanel>
-            <!-- Balanç -->
+
+            <!-- Balance -->
             <StackPanel Margin="10">
                 <TextBlock Text="Balance" FontSize="16" FontWeight="Bold"/>
-                <TextBlock Name="BalanceText" Text="$0.00" FontSize="14" Foreground="Blue"/>
+                <TextBlock Name="BalanceText" Text="{Binding Balance, StringFormat=${0:N2}}" 
+                           FontSize="14" Foreground="Blue"/>
             </StackPanel>
         </StackPanel>
-        <!-- DataGrid per mostrar els ingressos i despeses -->
-        <DataGrid Name="DataGridSummary" Grid.Row="2" Margin="10" AutoGenerateColumns="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+        <!-- DataGrid to show income and expenses -->
+        <DataGrid Name="DataGridSummary" Grid.Row="2" Margin="10" AutoGenerateColumns="False" 
+                  ItemsSource="{Binding Entries}" IsReadOnly="True"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat=dd/MM/yyyy}" Width="*"/>
                 <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="2*"/>
-                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" Width="*"/>
-                <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="1*"/>
+                <DataGridTemplateColumn Header="Amount" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DisplayAmount}" 
+                                       Foreground="{Binding AmountColor}" 
+                                       HorizontalAlignment="Right" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="*"/>
+                <DataGridTemplateColumn Header="Balance" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DisplayRunningBalance}" 
+                                       Foreground="{Binding RunningBalanceColor}" 
+                                       HorizontalAlignment="Right" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 
-        <!-- Botó per tornar enrere -->
+        <!-- Refresh Button -->
+        <Button Grid.Row="3" Content="Refresh" Width="100" Height="40" 
+                Command="{Binding RefreshCommand}"
+                FontSize="14" Background="#4CAF50" Foreground="White" 
+                Margin="10" HorizontalAlignment="Left"/>
+
+        <!-- Back Button -->
         <Button x:Name="BackButton" Grid.Row="3" Content="Back to Main Menu" Width="150" Height="40" 
                 FontSize="14" Background="#607D8B" Foreground="White" BorderBrush="#455A64" 
                 BorderThickness="1" Margin="10" HorizontalAlignment="Right" Click="BackButton_Click"/>

@@ -1,3 +1,1 @@
-﻿DSM Synology - Linux per NAS
-Debian
-Ubuntu
+﻿
